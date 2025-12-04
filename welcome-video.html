@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IConSCEPT 2025 - Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ============================================
+           CINEMATIC VIDEO CONTAINER
+        ============================================ */
+        .cinema-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: #000;
+        }
+
+        /* ============================================
+           DYNAMIC BACKGROUND SYSTEM
+        ============================================ */
+        .bg-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .gradient-bg {
+            background: radial-gradient(ellipse at 20% 80%, #1a0a2e 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, #0a1a2e 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, #0d0d1a 0%, #000 100%);
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .stars {
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1px 1px at 230px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent);
+            background-size: 350px 200px;
+            animation: starsMove 100s linear infinite;
+        }
+
+        @keyframes starsMove {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 500px; }
+        }
+
+        .grid-floor {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            bottom: -50%;
+            left: -50%;
+            background:
+                linear-gradient(90deg, rgba(0,212,255,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0,212,255,0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: perspective(500px) rotateX(60deg);
+            animation: gridMove 20s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to { background-position: 0 60px; }
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: -10%;
+            left: -5%;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            bottom: -10%;
+            right: -5%;
+            animation-delay: 2s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            top: 50%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(30px, -30px) scale(1.1); opacity: 0.5; }
+        }
+
+        .digital-rain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+
+        .rain-column {
+            position: absolute;
+            top: -100%;
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+            animation: rainFall linear infinite;
+            writing-mode: vertical-rl;
+        }
+
+        @keyframes rainFall {
+            to { transform: translateY(300%); }
+        }
+
+        .particle-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .particle-dot {
+            width: 4px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+            animation: particleFloat 10s ease-in-out infinite;
+        }
+
+        .particle-line {
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, #00d4ff, transparent);
+            animation: particleLine 8s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes particleLine {
+            0%, 100% { transform: translateY(100vh) scaleY(0.5); opacity: 0; }
+            50% { opacity: 0.8; transform: translateY(0) scaleY(1); }
+            100% { transform: translateY(-100vh) scaleY(0.5); opacity: 0; }
+        }
+
+        /* ============================================
+           SCENE SYSTEM
+        ============================================ */
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease, visibility 1.5s ease;
+            z-index: 100;
+        }
+
+        .scene.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ============================================
+           SCENE 1: CINEMATIC INTRO
+        ============================================ */
+        .intro-scene .lens-flare {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 40%);
+            animation: lensFlare 4s ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes lensFlare {
+            0% { opacity: 0; transform: scale(0.5); }
+            30% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.5) translate(20%, 20%); }
+        }
+
+        .intro-content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .intro-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .intro-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 20px;
+            object-fit: contain;
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            box-shadow: 0 0 40px rgba(0,212,255,0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .intro-logo:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .intro-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 12px;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeSlideUp 1.5s ease forwards 0.5s;
+        }
+
+        .intro-presents {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            letter-spacing: 20px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeSlideUp 1.5s ease forwards 1.5s;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================
+           SCENE 2: MAIN TITLE REVEAL
+        ============================================ */
+        .title-scene {
+            perspective: 1000px;
+        }
+
+        .title-banner {
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0,212,255,0.3);
+            animation: bannerReveal 1.5s ease forwards;
+        }
+
+        .title-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes bannerReveal {
+            0% { opacity: 0; transform: scale(0.9) translateY(-30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .main-title-container {
+            text-align: center;
+            transform-style: preserve-3d;
+        }
+
+        .conference-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 10px;
+            animation: titleReveal 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            filter: drop-shadow(0 0 30px rgba(0,212,255,0.5));
+        }
+
+        @keyframes titleReveal {
+            0% { transform: translateY(100%) rotateX(-90deg); opacity: 0; }
+            100% { transform: translateY(0) rotateX(0); opacity: 1; }
+        }
+
+        .conference-year {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(0,212,255,0.5);
+            margin-top: -20px;
+            animation: yearReveal 2s ease forwards 0.5s;
+            opacity: 0;
+        }
+
+        @keyframes yearReveal {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .conference-full-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 6px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeSlideUp 1.5s ease forwards 1s;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards 1.5s;
+        }
+
+        .sponsor-logo {
+            height: 70px;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        /* ============================================
+           SCENE 3: NIT PUDUCHERRY SHOWCASE
+        ============================================ */
+        .nit-scene {
+            background: linear-gradient(135deg, rgba(10,26,40,0.95), rgba(26,10,46,0.95));
+        }
+
+        .nit-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1300px;
+            padding: 0 40px;
+        }
+
+        .nit-visual {
+            flex: 1;
+            position: relative;
+        }
+
+        .nit-image-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .nit-image-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 1;
+        }
+
+        .nit-image {
+            width: 450px;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nit-content {
+            flex: 1.2;
+        }
+
+        .nit-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: slideFromRight 1s ease forwards 0.3s;
+        }
+
+        @keyframes slideFromRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .nit-description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.9;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideFromRight 1s ease forwards 0.6s;
+        }
+
+        .nit-stats {
+            display: flex;
+            gap: 25px;
+            opacity: 0;
+            animation: slideFromRight 1s ease forwards 0.9s;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(124,58,237,0.1));
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 15px;
+            padding: 20px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,212,255,0.5);
+            box-shadow: 0 10px 40px rgba(0,212,255,0.2);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           SCENE 4: CONFERENCE OVERVIEW
+        ============================================ */
+        .overview-scene {
+            padding: 60px;
+        }
+
+        .overview-container {
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .overview-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .overview-text {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 2;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards 0.3s;
+        }
+
+        .highlight-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(26,26,62,0.9), rgba(45,26,78,0.9));
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 20px;
+            padding: 40px;
+            width: 300px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardReveal 0.8s ease forwards;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0,212,255,0.5);
+            box-shadow: 0 20px 50px rgba(0,212,255,0.2);
+        }
+
+        .highlight-card:nth-child(1) { animation-delay: 0.5s; }
+        .highlight-card:nth-child(2) { animation-delay: 0.7s; }
+        .highlight-card:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes cardReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           SCENE 5: RESEARCH TRACKS
+        ============================================ */
+        .tracks-scene {
+            padding: 40px;
+        }
+
+        .tracks-container {
+            max-width: 1400px;
+        }
+
+        .tracks-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .track-card {
+            background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.05));
+            border: 1px solid rgba(0,212,255,0.15);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: trackReveal 0.6s ease forwards;
+            transition: all 0.4s ease;
+        }
+
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,212,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .track-card:hover::before {
+            left: 100%;
+        }
+
+        .track-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(0,212,255,0.4);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.2);
+        }
+
+        @keyframes trackReveal {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .track-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .track-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SCENE 6: KEYNOTE SPEAKERS
+        ============================================ */
+        .speakers-scene {
+            padding: 40px;
+        }
+
+        .speakers-container {
+            max-width: 1400px;
+        }
+
+        .speakers-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .speaker-card {
+            background: linear-gradient(180deg, rgba(26,26,62,0.95), rgba(15,15,35,0.95));
+            border: 1px solid rgba(0,212,255,0.15);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: speakerReveal 0.8s ease forwards;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0,212,255,0.4);
+            box-shadow: 0 20px 50px rgba(0,212,255,0.2);
+        }
+
+        @keyframes speakerReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .speaker-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid transparent;
+            background: linear-gradient(#1a1a3e, #1a1a3e) padding-box,
+                        linear-gradient(135deg, #00d4ff, #7c3aed) border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .speaker-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .speaker-affiliation {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .speaker-country {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.2));
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .speaker-topic {
+            font-size: 0.8rem;
+            color: #f472b6;
+            font-style: italic;
+            line-height: 1.4;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ============================================
+           SCENE 7: GRAND WELCOME
+        ============================================ */
+        .welcome-scene {
+            text-align: center;
+        }
+
+        .welcome-container {
+            position: relative;
+        }
+
+        .welcome-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .welcome-main {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed, #f472b6, #00d4ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: welcomeGradient 4s ease infinite, welcomeAppear 1.5s ease forwards 0.3s;
+            opacity: 0;
+            filter: drop-shadow(0 0 50px rgba(0,212,255,0.3));
+        }
+
+        @keyframes welcomeGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes welcomeAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .welcome-conference {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards 0.8s;
+        }
+
+        .welcome-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards 1s;
+        }
+
+        .welcome-logo {
+            height: 80px;
+            background: rgba(255,255,255,0.95);
+            padding: 12px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .welcome-details {
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards 1.2s;
+        }
+
+        .welcome-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #00d4ff;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-venue {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 3px;
+        }
+
+        .welcome-cta {
+            margin-top: 50px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease forwards 1.6s;
+        }
+
+        .cta-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+
+        .cta-highlight {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #f472b6;
+            animation: ctaPulse 1.5s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(244,114,182,0.5);
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.08); }
+        }
+
+        /* ============================================
+           START SCREEN
+        ============================================ */
+        .start-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .start-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .start-banner {
+            width: 80%;
+            max-width: 900px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0,212,255,0.3);
+            margin-bottom: 40px;
+        }
+
+        .start-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .start-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 10px;
+            margin-bottom: 40px;
+        }
+
+        .start-btn {
+            padding: 25px 80px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            border: none;
+            border-radius: 60px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .start-btn:hover::before {
+            left: 100%;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0,212,255,0.4);
+        }
+
+        /* ============================================
+           CONTROLS & PROGRESS
+        ============================================ */
+        .controls {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 500;
+            display: flex;
+            gap: 15px;
+        }
+
+        .control-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,212,255,0.3);
+            color: #00d4ff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover {
+            background: rgba(0,212,255,0.2);
+            border-color: #00d4ff;
+            transform: scale(1.1);
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 500;
+        }
+
+        .progress-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .progress-dot::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #00d4ff;
+            box-shadow: 0 0 20px #00d4ff;
+        }
+
+        .progress-dot.active::before {
+            border-color: rgba(0,212,255,0.5);
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .audio-indicator {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 25px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 30px;
+            border: 1px solid rgba(0,212,255,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 500;
+        }
+
+        .audio-indicator.active {
+            opacity: 1;
+        }
+
+        .audio-bars {
+            display: flex;
+            gap: 4px;
+            align-items: flex-end;
+            height: 25px;
+        }
+
+        .audio-bar {
+            width: 4px;
+            background: linear-gradient(to top, #00d4ff, #7c3aed);
+            border-radius: 2px;
+            animation: audioWave 0.5s ease-in-out infinite;
+        }
+
+        .audio-bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+        .audio-bar:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+        .audio-bar:nth-child(3) { height: 15px; animation-delay: 0.2s; }
+        .audio-bar:nth-child(4) { height: 25px; animation-delay: 0.3s; }
+        .audio-bar:nth-child(5) { height: 12px; animation-delay: 0.4s; }
+
+        @keyframes audioWave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.4); }
+        }
+
+        .audio-text {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        audio {
+            display: none;
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 1200px) {
+            .conference-name { font-size: 4rem; }
+            .conference-year { font-size: 6rem; }
+            .tracks-grid { grid-template-columns: repeat(2, 1fr); }
+            .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+            .nit-container { flex-direction: column; gap: 40px; }
+            .nit-image { width: 100%; max-width: 500px; }
+        }
+
+        @media (max-width: 768px) {
+            .conference-name { font-size: 2.5rem; }
+            .conference-year { font-size: 4rem; }
+            .welcome-main { font-size: 3rem; }
+            .welcome-conference { font-size: 2rem; }
+            .tracks-grid { grid-template-columns: 1fr; }
+            .speakers-grid { grid-template-columns: 1fr; }
+            .highlight-cards { flex-direction: column; align-items: center; }
+            .intro-logos { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Screen -->
+    <div class="start-screen" id="startScreen">
+        <div class="start-banner">
+            <img src="images/banner.jpg" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkcLaOjkAxcVHl78uoY5nRB9019OBvG6CcC71ko7EFs9o1zTXGP9J8HjHQVm86LCg4rsPxg4OUGGRNoGuMPbdW33UF_sx6a4WLTKrfbgJB818ND3eU9C-zzuC4YI4_On9g1Gx0FsRtia1kmaxUiC1vvjuDQwk0JLp159OCDbtgVpAOPNVAH6xZPv9XE=w16383'" alt="IConSCEPT 2025">
+        </div>
+        <div class="start-tagline">Welcome Experience</div>
+        <button class="start-btn" onclick="startPresentation()">
+            Begin Journey
+        </button>
+    </div>
+
+    <!-- Main Cinema Container -->
+    <div class="cinema-container">
+        <!-- Background Layers -->
+        <div class="bg-layer gradient-bg"></div>
+        <div class="bg-layer stars"></div>
+        <div class="bg-layer grid-floor"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="digital-rain" id="digitalRain"></div>
+        <div class="particle-container" id="particles"></div>
+
+        <!-- SCENE 1: Intro -->
+        <div class="scene intro-scene" id="scene1">
+            <div class="lens-flare"></div>
+            <div class="intro-content">
+                <div class="intro-logos">
+                    <img class="intro-logo" src="images/nit-logo.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkeFVup809jXqFPcssGV8f7iEJbxQbUIA8mSHl5HRzrWJCT5q4372z04i-bu5tGknFUEvcTrhWxQaU50kWHr5vLIW0CbqH1g1_O_GFsJexNUP5X2HK1BmBdNFgWkzObCLsfn0itlVgg20wY9cdVTYiv58arDPfzBO7OQon_-bZjTXbbrkkc5IpmN8N0O_OiDd1s2NOfBHwkNrCkj_iZT3j6TAWAUJNwf9ity=w1280'" alt="NIT Puducherry">
+                    <img class="intro-logo" src="images/ieee-logo.png" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkcx3tfon9aXXZDrLd2f9SK1YObCLRfFsIow-EiIYvX1syTMZlStcMEQLY-UbK6q-AwIMeb_AnfQcmbz8TbFMa5oJnB500gQqxFDKqkvu94zX1tFlth_1Og7LZe7cnt3A__qib-aHsFNbUgpJAddAh3We_MYb3OGfavasP_C2z_lVTO8J8DtXrZ6t53UQjvsKJ-en7S7V3KcQhOIcVlHqPGYvhMOd8ibwGmtNGo=w1280'" alt="IEEE">
+                </div>
+                <div class="intro-tagline">National Institute of Technology Puducherry</div>
+                <div class="intro-presents">Presents</div>
+            </div>
+        </div>
+
+        <!-- SCENE 2: Main Title -->
+        <div class="scene title-scene" id="scene2">
+            <div class="title-banner">
+                <img src="images/banner.jpg" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkcLaOjkAxcVHl78uoY5nRB9019OBvG6CcC71ko7EFs9o1zTXGP9J8HjHQVm86LCg4rsPxg4OUGGRNoGuMPbdW33UF_sx6a4WLTKrfbgJB818ND3eU9C-zzuC4YI4_On9g1Gx0FsRtia1kmaxUiC1vvjuDQwk0JLp159OCDbtgVpAOPNVAH6xZPv9XE=w16383'" alt="IConSCEPT 2025 Banner">
+            </div>
+            <div class="main-title-container">
+                <div class="conference-name">IConSCEPT</div>
+                <div class="conference-year">2025</div>
+                <div class="conference-full-name">
+                    International Conference on Signal Processing, Computation,<br>
+                    Electronics, Power and Telecommunication
+                </div>
+                <div class="sponsor-logos">
+                    <img class="sponsor-logo" src="images/nit-logo.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkeFVup809jXqFPcssGV8f7iEJbxQbUIA8mSHl5HRzrWJCT5q4372z04i-bu5tGknFUEvcTrhWxQaU50kWHr5vLIW0CbqH1g1_O_GFsJexNUP5X2HK1BmBdNFgWkzObCLsfn0itlVgg20wY9cdVTYiv58arDPfzBO7OQon_-bZjTXbbrkkc5IpmN8N0O_OiDd1s2NOfBHwkNrCkj_iZT3j6TAWAUJNwf9ity=w1280'" alt="NIT Puducherry">
+                    <img class="sponsor-logo" src="images/ieee-logo.png" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkcx3tfon9aXXZDrLd2f9SK1YObCLRfFsIow-EiIYvX1syTMZlStcMEQLY-UbK6q-AwIMeb_AnfQcmbz8TbFMa5oJnB500gQqxFDKqkvu94zX1tFlth_1Og7LZe7cnt3A__qib-aHsFNbUgpJAddAh3We_MYb3OGfavasP_C2z_lVTO8J8DtXrZ6t53UQjvsKJ-en7S7V3KcQhOIcVlHqPGYvhMOd8ibwGmtNGo=w1280'" alt="IEEE Madras Section">
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 3: NIT Puducherry -->
+        <div class="scene nit-scene" id="scene3">
+            <div class="nit-container">
+                <div class="nit-visual">
+                    <div class="nit-image-frame">
+                        <img class="nit-image" src="images/campus.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkf5yMf15cuWVtY-3wLQftl6E0ozHrO2RH8TX9J6FyJShffcWLfYQ5tXvmbPEiCpFkvbT9RFAVnjDwu59LsDrl-NGmEtkt0ePmQfOenfLhQH5fInXPS_cNFJGaGvOzdoWgR0OAlNjEASzkBP82RowYoSWVFv3ubtEJQv3el0K1IiS2cCbscqbfyWVEDXfDLUfceW14M0jDz_C7bN0kIfVtSmzGMIaTV4i84q=w1280'" alt="NIT Puducherry Campus">
+                    </div>
+                </div>
+                <div class="nit-content">
+                    <h2 class="nit-title">National Institute of Technology Puducherry</h2>
+                    <p class="nit-description">
+                        An Institute of National Importance, established in 2010 by the Government of India.
+                        Our magnificent 388-acre campus in Karaikal offers a perfect blend of coastal serenity
+                        and academic excellence, nurturing the next generation of technology leaders.
+                    </p>
+                    <div class="nit-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">#99</div>
+                            <div class="stat-label">NIRF 2025</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">388</div>
+                            <div class="stat-label">Acres Campus</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Departments</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 4: Conference Overview -->
+        <div class="scene overview-scene" id="scene4">
+            <div class="overview-container">
+                <h2 class="overview-title">A Global Platform for Innovation</h2>
+                <p class="overview-text">
+                    IConSCEPT 2025 brings together brilliant minds from around the world —
+                    researchers, industry experts, and visionaries — to share groundbreaking ideas
+                    and shape the future of technology.
+                </p>
+                <div class="highlight-cards">
+                    <div class="highlight-card">
+                        <span class="card-icon">🌍</span>
+                        <div class="card-title">Hybrid Conference</div>
+                        <div class="card-text">Join us in person or virtually from anywhere in the world</div>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="card-icon">📚</span>
+                        <div class="card-title">IEEE Xplore</div>
+                        <div class="card-text">All accepted papers indexed in IEEE digital library</div>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="card-icon">🤝</span>
+                        <div class="card-title">Global Network</div>
+                        <div class="card-text">Connect with researchers and industry leaders worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 5: Research Tracks -->
+        <div class="scene tracks-scene" id="scene5">
+            <div class="tracks-container">
+                <h2 class="tracks-title">Research Tracks</h2>
+                <div class="tracks-grid">
+                    <div class="track-card" style="animation-delay: 0.1s;">
+                        <span class="track-icon">🤖</span>
+                        <div class="track-name">Artificial Intelligence & Data Analytics</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.2s;">
+                        <span class="track-icon">🔗</span>
+                        <div class="track-name">IoT, Blockchain & Cloud Computing</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.3s;">
+                        <span class="track-icon">🥽</span>
+                        <div class="track-name">Cyber-Physical Systems & AR/VR</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.4s;">
+                        <span class="track-icon">📡</span>
+                        <div class="track-name">5G & Beyond Wireless</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.5s;">
+                        <span class="track-icon">📻</span>
+                        <div class="track-name">Antenna & Optical Communications</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.6s;">
+                        <span class="track-icon">💻</span>
+                        <div class="track-name">Signal Processing & VLSI</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.7s;">
+                        <span class="track-icon">⚡</span>
+                        <div class="track-name">Power Electronics & EVs</div>
+                    </div>
+                    <div class="track-card" style="animation-delay: 0.8s;">
+                        <span class="track-icon">🌱</span>
+                        <div class="track-name">Renewable Energy & Industry 4.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 6: Keynote Speakers -->
+        <div class="scene speakers-scene" id="scene6">
+            <div class="speakers-container">
+                <h2 class="speakers-title">Distinguished Keynote Speakers</h2>
+                <div class="speakers-grid">
+                    <div class="speaker-card" style="animation-delay: 0.2s;">
+                        <img class="speaker-photo" src="images/speaker-frery.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkdevUPGrOsIjzDnZdjrZdSInqhdkWiFvR9QXD5Tk3zZLUN_ZkBtPHwAmTkxwHQhSuFR3zKMwwsxRBy-espBHO_CdTApgPZiLnsbwOz5XUCMVWxhqv0Er4crAXhqULyC0zzQWQcAoD1TSUt9UWEZTS95gvS-aVT9kG0OSpzMK5RK7NNdgSA_25uJamD0FiEa8itWgFKjPHw0dMjpmBKmiM4Y5Yv5Yl8CfFLu=w1280'" alt="Prof. Alejandro Frery">
+                        <div class="speaker-name">Prof. Alejandro Frery</div>
+                        <div class="speaker-affiliation">Victoria University of Wellington</div>
+                        <div class="speaker-country">New Zealand</div>
+                        <div class="speaker-topic">"Entropy as a measure of texture in SAR imagery"</div>
+                    </div>
+                    <div class="speaker-card" style="animation-delay: 0.4s;">
+                        <img class="speaker-photo" src="images/speaker-sangaiah.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkct4oik-A7cHDxSBkTHBcq0Yj37ldoea_mpMzA3f8k7zCm2xISzk-gl6EnE4dMJrAVH3MzsEOhfr9BnxoAsPZeZQW1qfglSrBIkmGs0fLN-zlhVoWklzYmozWqnHfJKE82C6kfa0ovoJ_-lN9GjwXGkITIWEdijWNWDhEhXdbVkqCyPJ2U7ATeBpJv8fq6gpoBBZGTGQTc0JlSYNnrtAVKQnW_c00c3Fo95=w1280'" alt="Dr. Arun Kumar Sangaiah">
+                        <div class="speaker-name">Dr. Arun Kumar Sangaiah</div>
+                        <div class="speaker-affiliation">National Yunlin University</div>
+                        <div class="speaker-country">Taiwan</div>
+                        <div class="speaker-topic">"AI-Driven IoT for Sustainable Environments"</div>
+                    </div>
+                    <div class="speaker-card" style="animation-delay: 0.6s;">
+                        <img class="speaker-photo" src="images/speaker-tripathi.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkcgOFtEwJaS7gAtfopR4FNTEPU60Wcxf343fyjFhrds1ELY5JUvGaCOfw9dOj21HQEfoA6mdFtn5u6unVfRbb5e_1XdHalh4eOYnpeDj8LkbbEsySosZYDmc3B8C-jlrXgI-1X25OVWNK7vVah5-xHAVh0BIN8uj9VBD-iuG1LRQtlHMFkbWWZwyVs1MH039GOD2tWMwbhJDgSR5bt9CA0qKQTjwnoFfJkORu8=w1280'" alt="Dr. Ravi Nath Tripathi">
+                        <div class="speaker-name">Dr. Ravi Nath Tripathi</div>
+                        <div class="speaker-affiliation">Kyushu Institute of Technology</div>
+                        <div class="speaker-country">Japan</div>
+                        <div class="speaker-topic">"Power electronics for energy efficient society"</div>
+                    </div>
+                    <div class="speaker-card" style="animation-delay: 0.8s;">
+                        <img class="speaker-photo" src="images/speaker-ghosh.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkdY8MMPuMK7g6f__7R47Vq6xxaYqQzFWmBN1RJju5xluvDp23ZJx1RsRfEAduhScjtFxTcy7W2sOl0bdCszP_sxsWDQk19RscGQ4q5FH7s58qohGJZBdKDNISdgkhTWX55kYWaNJQYbsMuwKrDcrsxNIzMjiVFdNSlpe3NHULrcGgHZTchVnepazK4g-6QfjlDDNzO3UKGrFLpHrHZTFIlsXdyYsXQr12Ef9po=w1280'" alt="Prof. Bratin Ghosh">
+                        <div class="speaker-name">Prof. Bratin Ghosh</div>
+                        <div class="speaker-affiliation">IIT Kharagpur</div>
+                        <div class="speaker-country">India</div>
+                        <div class="speaker-topic">"Dielectric resonator antenna design"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCENE 7: Grand Welcome -->
+        <div class="scene welcome-scene" id="scene7">
+            <div class="welcome-container">
+                <div class="welcome-subtitle">We Are Honored to</div>
+                <div class="welcome-main">Welcome You</div>
+                <div class="welcome-conference">IConSCEPT 2025</div>
+                <div class="welcome-logos">
+                    <img class="welcome-logo" src="images/nit-logo.webp" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkeFVup809jXqFPcssGV8f7iEJbxQbUIA8mSHl5HRzrWJCT5q4372z04i-bu5tGknFUEvcTrhWxQaU50kWHr5vLIW0CbqH1g1_O_GFsJexNUP5X2HK1BmBdNFgWkzObCLsfn0itlVgg20wY9cdVTYiv58arDPfzBO7OQon_-bZjTXbbrkkc5IpmN8N0O_OiDd1s2NOfBHwkNrCkj_iZT3j6TAWAUJNwf9ity=w1280'" alt="NIT Puducherry">
+                    <img class="welcome-logo" src="images/ieee-logo.png" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AAzXCkcx3tfon9aXXZDrLd2f9SK1YObCLRfFsIow-EiIYvX1syTMZlStcMEQLY-UbK6q-AwIMeb_AnfQcmbz8TbFMa5oJnB500gQqxFDKqkvu94zX1tFlth_1Og7LZe7cnt3A__qib-aHsFNbUgpJAddAh3We_MYb3OGfavasP_C2z_lVTO8J8DtXrZ6t53UQjvsKJ-en7S7V3KcQhOIcVlHqPGYvhMOd8ibwGmtNGo=w1280'" alt="IEEE">
+                </div>
+                <div class="welcome-details">
+                    <div class="welcome-date">December 6-7, 2025</div>
+                    <div class="welcome-venue">NIT Puducherry, Karaikal, India</div>
+                </div>
+                <div class="welcome-cta">
+                    <div class="cta-text">The Conference Begins</div>
+                    <div class="cta-highlight">Tomorrow!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" id="audioBtn" onclick="toggleAudio()">🔊</button>
+        <button class="control-btn" id="playBtn" onclick="togglePlay()">⏸️</button>
+        <button class="control-btn" onclick="restartPresentation()">🔄</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar">
+        <div class="progress-dot" data-scene="1"></div>
+        <div class="progress-dot" data-scene="2"></div>
+        <div class="progress-dot" data-scene="3"></div>
+        <div class="progress-dot" data-scene="4"></div>
+        <div class="progress-dot" data-scene="5"></div>
+        <div class="progress-dot" data-scene="6"></div>
+        <div class="progress-dot" data-scene="7"></div>
+    </div>
+
+    <!-- Audio Indicator -->
+    <div class="audio-indicator" id="audioIndicator">
+        <div class="audio-bars">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+        </div>
+        <div class="audio-text">PLAYING</div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="audio1" preload="auto" src="audio/slide1.mp3"></audio>
+    <audio id="audio2" preload="auto" src="audio/slide2.mp3"></audio>
+    <audio id="audio3" preload="auto" src="audio/slide3.mp3"></audio>
+    <audio id="audio4" preload="auto" src="audio/slide4.mp3"></audio>
+    <audio id="audio5" preload="auto" src="audio/slide5.mp3"></audio>
+    <audio id="audio6" preload="auto" src="audio/slide6.mp3"></audio>
+    <audio id="audio7" preload="auto" src="audio/slide7.mp3"></audio>
+
+    <script>
+        const SCENE_COUNT = 7;
+        const SCENE_DURATIONS = [6000, 14000, 18000, 16000, 16000, 18000, 20000];
+
+        let currentScene = 0;
+        let isPlaying = false;
+        let audioEnabled = true;
+        let sceneTimer = null;
+        let currentAudio = null;
+
+        function init() {
+            createDigitalRain();
+            createParticles();
+            setupProgressDots();
+            setupKeyboardControls();
+        }
+
+        function createDigitalRain() {
+            const container = document.getElementById('digitalRain');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+
+            for (let i = 0; i < 30; i++) {
+                const column = document.createElement('div');
+                column.className = 'rain-column';
+                column.style.left = `${Math.random() * 100}%`;
+                column.style.animationDuration = `${8 + Math.random() * 12}s`;
+                column.style.animationDelay = `${Math.random() * 5}s`;
+
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + '\n';
+                }
+                column.textContent = text;
+                container.appendChild(column);
+            }
+        }
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                if (Math.random() > 0.7) {
+                    particle.innerHTML = '<div class="particle-line"></div>';
+                } else {
+                    particle.innerHTML = '<div class="particle-dot"></div>';
+                }
+
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.animationDuration = `${8 + Math.random() * 10}s`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        function setupProgressDots() {
+            document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToScene(index);
+                });
+            });
+        }
+
+        function setupKeyboardControls() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    e.preventDefault();
+                    nextScene();
+                } else if (e.key === 'ArrowLeft') {
+                    prevScene();
+                } else if (e.key === 'r' || e.key === 'R') {
+                    restartPresentation();
+                }
+            });
+        }
+
+        function startPresentation() {
+            document.getElementById('startScreen').classList.add('hidden');
+            isPlaying = true;
+            document.getElementById('playBtn').textContent = '⏸️';
+            showScene(0);
+        }
+
+        function showScene(index) {
+            if (index < 0 || index >= SCENE_COUNT) return;
+
+            stopAudio();
+            clearTimeout(sceneTimer);
+
+            document.querySelectorAll('.scene').forEach(scene => {
+                scene.classList.remove('active');
+            });
+
+            const scene = document.getElementById(`scene${index + 1}`);
+            scene.classList.add('active');
+
+            document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentScene = index;
+
+            if (audioEnabled && isPlaying) {
+                playAudio(index);
+            }
+
+            if (isPlaying && index < SCENE_COUNT - 1) {
+                const duration = getSceneDuration(index);
+                sceneTimer = setTimeout(() => {
+                    showScene(index + 1);
+                }, duration);
+            }
+
+            triggerSceneAnimations(index);
+        }
+
+        function getSceneDuration(index) {
+            const audio = document.getElementById(`audio${index + 1}`);
+            if (audio && audio.duration && !isNaN(audio.duration)) {
+                return (audio.duration * 1000) + 2500;
+            }
+            return SCENE_DURATIONS[index];
+        }
+
+        function triggerSceneAnimations(index) {
+            if (index === 4) {
+                document.querySelectorAll('.track-card').forEach((card, i) => {
+                    card.style.animation = 'none';
+                    card.offsetHeight;
+                    card.style.animation = `trackReveal 0.6s ease forwards ${0.1 + i * 0.1}s`;
+                });
+            }
+            if (index === 5) {
+                document.querySelectorAll('.speaker-card').forEach((card, i) => {
+                    card.style.animation = 'none';
+                    card.offsetHeight;
+                    card.style.animation = `speakerReveal 0.8s ease forwards ${0.2 + i * 0.2}s`;
+                });
+            }
+        }
+
+        function nextScene() {
+            if (currentScene < SCENE_COUNT - 1) {
+                goToScene(currentScene + 1);
+            }
+        }
+
+        function prevScene() {
+            if (currentScene > 0) {
+                goToScene(currentScene - 1);
+            }
+        }
+
+        function goToScene(index) {
+            stopAudio();
+            clearTimeout(sceneTimer);
+            showScene(index);
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            document.getElementById('playBtn').textContent = isPlaying ? '⏸️' : '▶️';
+
+            if (isPlaying) {
+                showScene(currentScene);
+            } else {
+                stopAudio();
+                clearTimeout(sceneTimer);
+            }
+        }
+
+        function restartPresentation() {
+            stopAudio();
+            clearTimeout(sceneTimer);
+            isPlaying = true;
+            document.getElementById('playBtn').textContent = '⏸️';
+            showScene(0);
+        }
+
+        function playAudio(index) {
+            const audio = document.getElementById(`audio${index + 1}`);
+            if (audio) {
+                currentAudio = audio;
+                audio.currentTime = 0;
+
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        document.getElementById('audioIndicator').classList.add('active');
+                    }).catch(() => {
+                        console.log('Audio autoplay blocked');
+                    });
+                }
+
+                audio.onended = () => {
+                    document.getElementById('audioIndicator').classList.remove('active');
+                };
+            }
+        }
+
+        function stopAudio() {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            document.getElementById('audioIndicator').classList.remove('active');
+        }
+
+        function toggleAudio() {
+            audioEnabled = !audioEnabled;
+            document.getElementById('audioBtn').textContent = audioEnabled ? '🔊' : '🔇';
+
+            if (!audioEnabled) {
+                stopAudio();
+            } else if (isPlaying) {
+                playAudio(currentScene);
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

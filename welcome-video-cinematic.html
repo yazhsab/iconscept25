@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>iConSCEPT 2025 - Cinematic Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700;800&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Video-like gradient background */
+        .bg-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(15, 32, 65, 1) 0%, rgba(5, 10, 20, 1) 100%);
+            animation: bgPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.1); }
+        }
+
+        /* Animated gradient overlay */
+        .gradient-overlay {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: conic-gradient(from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(66, 153, 225, 0.03) 60deg,
+                transparent 120deg,
+                rgba(72, 187, 120, 0.03) 180deg,
+                transparent 240deg,
+                rgba(237, 137, 54, 0.03) 300deg,
+                transparent 360deg);
+            animation: rotateGradient 30s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Starfield effect */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Scene container for sequential animations */
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Opening flash effect */
+        .flash {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 0;
+            animation: flashEffect 0.5s ease-out 0.2s forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes flashEffect {
+            0% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+
+        /* Logo reveal with light rays */
+        .light-rays {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: raysAppear 2s ease-out 0.5s forwards;
+        }
+
+        .ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 300px;
+            background: linear-gradient(to top, transparent, rgba(246, 224, 94, 0.6), transparent);
+            transform-origin: bottom center;
+            animation: rayRotate 8s linear infinite;
+        }
+
+        @keyframes raysAppear {
+            to { opacity: 0.5; }
+        }
+
+        @keyframes rayRotate {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Main title animation */
+        .main-title {
+            position: relative;
+            z-index: 10;
+        }
+
+        .welcome-line {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #a0aec0;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeSlideUp 1.5s ease-out 1s forwards;
+            text-align: center;
+        }
+
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 140px;
+            font-weight: 800;
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .logo-letter {
+            display: inline-block;
+            opacity: 0;
+            color: #fff;
+            text-shadow:
+                0 0 20px rgba(66, 153, 225, 0.8),
+                0 0 40px rgba(66, 153, 225, 0.5),
+                0 0 60px rgba(66, 153, 225, 0.3);
+            animation: letterReveal 0.8s ease-out forwards;
+        }
+
+        .logo-letter:nth-child(1) { animation-delay: 1.5s; color: #4299e1; }
+        .logo-letter:nth-child(2) { animation-delay: 1.6s; color: #48bb78; }
+        .logo-letter:nth-child(3) { animation-delay: 1.7s; color: #f6e05e; }
+        .logo-letter:nth-child(4) { animation-delay: 1.8s; color: #ed8936; }
+        .logo-letter:nth-child(5) { animation-delay: 1.9s; color: #fc8181; }
+        .logo-letter:nth-child(6) { animation-delay: 2.0s; color: #b794f4; }
+        .logo-letter:nth-child(7) { animation-delay: 2.1s; color: #4299e1; }
+        .logo-letter:nth-child(8) { animation-delay: 2.2s; color: #48bb78; }
+        .logo-letter:nth-child(9) { animation-delay: 2.3s; color: #f6e05e; }
+
+        @keyframes letterReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.5);
+                filter: blur(20px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(10px) scale(0.9);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .year-badge {
+            font-size: 80px;
+            font-weight: 300;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            letter-spacing: 30px;
+            margin-left: 30px;
+            opacity: 0;
+            animation: yearFade 1.5s ease-out 3s forwards;
+        }
+
+        @keyframes yearFade {
+            to { opacity: 1; }
+        }
+
+        /* Full conference name */
+        .full-name {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeSlideUp 1.5s ease-out 3.5s forwards;
+        }
+
+        .full-name-line {
+            font-size: 22px;
+            color: #718096;
+            letter-spacing: 4px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .full-name-line span {
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* Horizontal line animation */
+        .h-line {
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #4299e1, #48bb78, #f6e05e, #48bb78, #4299e1, transparent);
+            margin: 50px 0;
+            animation: lineExpand 2s ease-out 4.5s forwards;
+        }
+
+        @keyframes lineExpand {
+            to { width: 800px; }
+        }
+
+        /* Institute section */
+        .institute-section {
+            text-align: center;
+            opacity: 0;
+            animation: fadeSlideUp 1.5s ease-out 5.5s forwards;
+        }
+
+        .nit-logo-placeholder {
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(66, 153, 225, 0.5);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(66, 153, 225, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(66, 153, 225, 0.6); }
+        }
+
+        .nit-logo-placeholder span {
+            font-size: 36px;
+            font-weight: 700;
+            color: #4299e1;
+        }
+
+        .institute-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .institute-location {
+            font-size: 28px;
+            color: #f6e05e;
+            letter-spacing: 15px;
+            font-weight: 300;
+        }
+
+        /* Date section */
+        .date-section {
+            margin-top: 50px;
+            padding: 25px 80px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: datePop 1s ease-out 6.5s forwards;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes datePop {
+            0% { opacity: 0; transform: scale(0.8); }
+            70% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .date-label {
+            font-size: 14px;
+            color: #718096;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .date-value {
+            font-size: 42px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 5px;
+        }
+
+        .date-value span {
+            color: #4299e1;
+        }
+
+        /* Bottom tech keywords */
+        .tech-keywords {
+            position: absolute;
+            bottom: 60px;
+            display: flex;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 7.5s forwards;
+        }
+
+        .keyword {
+            font-size: 12px;
+            color: #4a5568;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: 1px solid #2d3748;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .keyword:nth-child(odd) {
+            animation: keywordPulse 3s ease-in-out infinite;
+        }
+
+        .keyword:nth-child(even) {
+            animation: keywordPulse 3s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes keywordPulse {
+            0%, 100% { border-color: #2d3748; color: #4a5568; }
+            50% { border-color: #4299e1; color: #4299e1; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Lens flare effect */
+        .lens-flare {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: flareMove 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes flareMove {
+            0% { top: 20%; left: 20%; opacity: 0; }
+            25% { opacity: 0.3; }
+            50% { top: 30%; left: 70%; opacity: 0.5; }
+            75% { opacity: 0.3; }
+            100% { top: 20%; left: 20%; opacity: 0; }
+        }
+
+        /* Vignette effect */
+        .vignette {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-gradient"></div>
+        <div class="gradient-overlay"></div>
+
+        <!-- Stars -->
+        <div class="stars" id="stars"></div>
+
+        <!-- Flash effect -->
+        <div class="flash"></div>
+
+        <!-- Light rays -->
+        <div class="light-rays" id="lightRays"></div>
+
+        <!-- Lens flare -->
+        <div class="lens-flare"></div>
+
+        <!-- Main Scene -->
+        <div class="scene">
+            <div class="main-title">
+                <div class="welcome-line">Welcome to</div>
+
+                <div class="logo-text">
+                    <span class="logo-letter">i</span><span class="logo-letter">C</span><span class="logo-letter">o</span><span class="logo-letter">n</span><span class="logo-letter">S</span><span class="logo-letter">C</span><span class="logo-letter">E</span><span class="logo-letter">P</span><span class="logo-letter">T</span>
+                </div>
+
+                <div class="year-badge">2025</div>
+            </div>
+
+            <div class="full-name">
+                <div class="full-name-line">International Conference on</div>
+                <div class="full-name-line">
+                    <span>Signal Processing</span> • <span>Computation</span> • <span>Electronics</span>
+                </div>
+                <div class="full-name-line">
+                    <span>Power</span> • <span>Telecommunication</span>
+                </div>
+            </div>
+
+            <div class="h-line"></div>
+
+            <div class="institute-section">
+                <div class="nit-logo-placeholder">
+                    <span>NIT</span>
+                </div>
+                <div class="institute-name">National Institute of Technology</div>
+                <div class="institute-location">PUDUCHERRY</div>
+            </div>
+
+            <div class="date-section">
+                <div class="date-label">MARK YOUR CALENDAR</div>
+                <div class="date-value"><span>06</span> - <span>07</span> December 2025</div>
+            </div>
+
+            <div class="tech-keywords">
+                <div class="keyword">Signal Processing</div>
+                <div class="keyword">Computation</div>
+                <div class="keyword">Electronics</div>
+                <div class="keyword">Power Systems</div>
+                <div class="keyword">Telecommunication</div>
+            </div>
+        </div>
+
+        <!-- Vignette -->
+        <div class="vignette"></div>
+    </div>
+
+    <script>
+        // Generate stars
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 2 + 1) + 'px';
+                star.style.height = star.style.width;
+                starsContainer.appendChild(star);
+            }
+
+            // Generate light rays
+            const raysContainer = document.getElementById('lightRays');
+            for (let i = 0; i < 12; i++) {
+                const ray = document.createElement('div');
+                ray.className = 'ray';
+                ray.style.transform = `rotate(${i * 30}deg)`;
+                ray.style.animationDelay = `${-i * 0.67}s`;
+                raysContainer.appendChild(ray);
+            }
+        });
+    </script>
+</body>
+</html>
